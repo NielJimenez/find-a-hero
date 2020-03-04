@@ -33,12 +33,12 @@ const plugin = [
 ]
 
 if (ENV === 'production') {
-  plugin.push(
-    new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: './app/sw-src.js',
-      swDest: 'sw.js'
-    })
-  )
+  // plugin.push(
+  //   new WorkboxWebpackPlugin.InjectManifest({
+  //     swSrc: './app/sw-src.js',
+  //     swDest: 'sw.js'
+  //   })
+  // )
 
   plugin.push(
     new PurgecssPlugin({
