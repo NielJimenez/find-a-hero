@@ -23,6 +23,9 @@
     "react-final-form": "^6.3.5",
     "react-helmet": "^5.2.1",
     "react-intl": "^3.12.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.1",
+    "react-toastify": "^5.5.0",
     "workbox-webpack-plugin": "^5.0.0"
   },
   "devDependencies": {

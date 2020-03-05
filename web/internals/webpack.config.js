@@ -22,6 +22,7 @@ module.exports = (env, options) => {
 
   const config = {
     entry: {
+      semantic: path.join(__dirname, '..', srcFolder, 'styles.js'),
       main: path.resolve(
         __dirname,
         '..',
