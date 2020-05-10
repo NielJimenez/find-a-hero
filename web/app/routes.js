@@ -1,27 +1,14 @@
 import { lazy } from 'react'
-import SampleRootRoutes from 'RootContainers/SampleRoot/routes'
+import MainRootRoutes from 'RootContainers/MainRoot/routes'
 
-const LoadHome = lazy(() => import('Containers/Home' /* webpackChunkName: "Container-Home" */))
-
-const LoadAbout = lazy(() => import('Containers/About' /* webpackChunkName: "Container-About" */))
-
-const LoadSampleRoot = lazy(() => import('RootContainers/SampleRoot' /* webpackChunkName: "RootContainers-SampleRoot" */))
+const LoadMainRoot = lazy(() => import('RootContainers/MainRoot' /* webpackChunkName: "RootContainers-MainRoot" */))
 
 const routes = [
   {
     path: '/',
-    component: LoadHome,
-    exact: true
-  },
-  {
-    path: '/about',
-    component: LoadAbout
-  },
-  { 
-    path: '/sample-root',
-    component: LoadSampleRoot,
+    component: LoadMainRoot,
     routes: [
-      ...SampleRootRoutes
+      ...MainRootRoutes
     ]
   }
 ]

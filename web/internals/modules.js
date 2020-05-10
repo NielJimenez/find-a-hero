@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const NODE_ENV = process.env.NODE_ENV
 
 const postCssPlugins = [
-  require('tailwindcss'),
+  require('tailwindcss')('./tailwindcss-config.js'),
   require('autoprefixer')
 ]
 
