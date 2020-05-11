@@ -5,6 +5,7 @@ COPY .docker/php/vhost.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /srv/app
 
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN chown -R www-data:www-data /srv/app \
     && a2enmod rewrite
 RUN apt update

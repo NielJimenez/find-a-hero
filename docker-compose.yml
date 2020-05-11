@@ -11,6 +11,18 @@ services:
       volumes:
         - ./app:/srv/app
 
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8282:8080
+
   web:
     build:
       context: ./web

@@ -21,10 +21,12 @@
 
 return array(
 	'default' => array(
+		'type' => 'mysqli',
 		'connection' => array(
-			'dsn'      => 'mysql:host=localhost;dbname=fuel_dev',
+			'hostname' => 'db',
+			'database' => 'find_a_hero',
 			'username' => 'root',
-			'password' => 'root',
-		),
+			'password' => 'password',
+		)
 	),
 );
