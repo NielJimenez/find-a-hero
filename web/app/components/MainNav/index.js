@@ -17,9 +17,12 @@ const Link = ({ children, onClick }) => {
 }
 
 const MainNav = ({ history }) => {
+  const isLogin = localStorage.getItem('user_id')
+
   const {
     setEventFormModal,
-    setAccountModal
+    setAccountModal,
+    setLoginModal
   } = useContext(RootContext)
   return (
     <div
@@ -36,32 +39,66 @@ const MainNav = ({ history }) => {
           <FontAwesomeIcon className='absolute' icon={faHome} />
           <span className='ml-10'>Home</span>
         </Link>
-        <Link onClick={() => history.push('/events')}>
-          <FontAwesomeIcon className='absolute' icon={faCalendar} />
-          <span className='ml-10'>Events</span>
-        </Link>
-        <Link onClick={() => history.push('/events/me')}>
-          <FontAwesomeIcon className='absolute' icon={faBookmark} />
-          <span className='ml-10'>Saved</span>
-        </Link>
-        <Link onClick={() => setAccountModal(true)}>
-          <FontAwesomeIcon className='absolute' icon={faUserCircle} />
-          <span className='ml-10'>
-            Account Profile
-          </span>
-        </Link>
-        <li className='font-light my-10 cursor-pointer'>
-          <Button
-            fluid
-            icon
-            labelPosition='left'
-            onClick={() => setEventFormModal(true)}
-            primary
-          >
-            <Icon name='plus' />
-            Add Event
-          </Button>
-        </li>
+        {
+          isLogin &&
+          <>
+            <Link onClick={() => history.push('/events')}>
+              <FontAwesomeIcon className='absolute' icon={faCalendar} />
+              <span className='ml-10'>Events</span>
+            </Link>
+            <Link onClick={() => setAccountModal(true)}>
+              <FontAwesomeIcon className='absolute' icon={faUserCircle} />
+              <span className='ml-10'>
+                Account Profile
+              </span>
+            </Link>
+            <li className='font-light my-10 cursor-pointer'>
+              <Button
+                fluid
+                icon
+                labelPosition='left'
+                onClick={() => setEventFormModal(true)}
+                primary
+              >
+                <Icon name='plus' />
+                Add Event
+              </Button>
+            </li>
+            <li
+              className='font-light my-10 cursor-pointer text-center text-lg'
+              onClick={() => {
+                localStorage.clear()
+                window.location.href = '/'
+              }}
+            >
+              <div>
+                Logout
+              </div>
+            </li>
+          </>
+        }
+        {
+          !isLogin &&
+          <>
+            <li className='font-light my-10 cursor-pointer'>
+              <Button
+                fluid
+                icon
+                labelPosition='left'
+                onClick={() => setLoginModal(true)}
+                primary
+              >
+                <Icon name='user' />
+                Login
+              </Button>
+            </li>
+            <li className='font-light my-10 cursor-pointer text-center text-lg'>
+              <div>
+                Sign-up
+              </div>
+            </li>
+          </>
+        }
       </ul>
     </div>
   )

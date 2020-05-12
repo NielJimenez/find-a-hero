@@ -9,6 +9,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 const glob = require('glob')
+const dotenvWebpack = require('dotenv-webpack')
 
 const srcFolder = process.env.SRC_FOLDER
 const ENV = process.env.NODE_ENV
@@ -29,7 +30,8 @@ const plugin = [
   new MiniCssExtractPlugin({
     filename: '[name].[hash].css',
     chunkFilename: '[id].[hash].css'
-  })
+  }),
+  new dotenvWebpack()
 ]
 
 if (ENV === 'production') {

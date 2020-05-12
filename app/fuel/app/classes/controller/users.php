@@ -25,8 +25,8 @@ use Fuel\Core\Input;
 class Controller_Users extends Controller_Rest
 {
 
-	public function post_authenticate() {
-		$post = Input::json();
+	public function post_auth() {
+		$post = Input::post();
 		$query = Model_User::query()
 			->where('email', '=', $post['email'])
 			->where('password', '=', $post['password'])
@@ -36,7 +36,7 @@ class Controller_Users extends Controller_Rest
 			return $this->response(null);
 		}
 		
-		return $this->response($query->to_array());
+		return $this->response($post);
 	}
 
 	public function get_index()

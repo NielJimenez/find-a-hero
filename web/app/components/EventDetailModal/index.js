@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Modal, Segment } from 'semantic-ui-react'
 
+import { Context as HomeContext } from 'Containers/Home'
+
+
 const EventDetailModal = props => {
+  const { eventData } = useContext(HomeContext)
   return (
     <Modal open size='tiny' {...props}>
       <Modal.Header>
-        Title of the Event (Time)
+        {`${eventData?.title} (${eventData?.date})`}
       </Modal.Header>
       <Modal.Content>
         <div className='block'>
           <Segment>
-            asda
+            {eventData?.location}
           </Segment>
         </div>
         <div className='block mt-4 mx-2'>
-          description
+          {eventData?.description}
         </div>
       </Modal.Content>
       <Modal.Actions>

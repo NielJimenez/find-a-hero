@@ -6,18 +6,21 @@ import SecondPane from 'Components/SecondPane'
 import RouteWithSubroutes from 'Components/RouteWithSubRoutes'
 import EventFormModal from 'Components/EventFormModal'
 import AccountProfileModal from 'Components/AccountProfileModal'
+import LoginModal from 'Components/LoginModal'
 
 import Context from './context'
 
 const SampleRoot = ({ routes, match }) => {
   const [eventFormModal, setEventFormModal] = useState(false)
   const [accountModal, setAccountModal] = useState(false)
+  const [loginModal, setLoginModal] = useState(false)
 
   return (
     <Context.Provider
       value={{
-        setEventFormModal,
-        setAccountModal
+        setLoginModal,
+        setAccountModal,
+        setEventFormModal
       }}
     >
       <div
@@ -56,6 +59,10 @@ const SampleRoot = ({ routes, match }) => {
       <AccountProfileModal
         open={accountModal}
         onClose={() => setAccountModal(prev => !prev)}
+      />
+      <LoginModal
+        open={loginModal}
+        onClose={() => setLoginModal(prev => !prev)}
       />
     </Context.Provider>
   )

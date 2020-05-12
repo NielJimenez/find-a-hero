@@ -5,6 +5,7 @@ const env = process.env.NODE_ENV
 const srcFolder = process.env.SRC_FOLDER
 
 let alias = {
+  App: path.resolve(__dirname, '..', srcFolder),
   Components: path.resolve(__dirname, '..', srcFolder, 'components'),
   Containers: path.resolve(__dirname, '..', srcFolder, 'containers'),
   RootContainers: path.resolve(__dirname, '..', srcFolder, 'rootContainers'),

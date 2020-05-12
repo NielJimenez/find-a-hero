@@ -25,9 +25,15 @@ use Fuel\Core\Input;
 class Controller_Events extends Controller_Rest
 {
 	public function get_list() {
-		$event = Model_Event::find('all', array('related' => array('user')));
+		$events = Model_Event::find('all', array('related' => array('user')));
 
-		return $this->response($event);
+		$list = [];
+
+		foreach($events as $event) {
+			array_push($list, $event);
+		}
+
+		return $this->response($list);
 	}
 
 	public function get_index()
